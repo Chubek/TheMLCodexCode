@@ -27,24 +27,14 @@ class DatasetReader:
 
 
     def read_into_array(self, X, Y):
-        if not X in csv_reader.row.keys() or not Y in csv_reader.row.keys():
-            raise Exception("Keys entered are not in the CSV file.")
-        if not len(Y) == 1:
-            raise Exception("Length of Y should be 1 --- Target is invariable one column.")
-
         csv_reader = self.__read_csv()
 
-        X_list = []
+        if not all(x in csv_reader.keys() for x in X) or not all(y in csv_reader.keys() for y in Y):
+            raise Exception("Keys entered are not in the CSV file.")
+        
+        X_list = [csv_reader[x] for x in X]
+        Y_list = [csv_reader[y] for y in Y]
 
-        for x in X:
-            for row in csv_reader:
-                X_list.append(row[x])
-
-        Y_list = []
-
-        for y in Y:
-            for row in csv_reader:
-                Y_list.append(row[y])
 
 
         return np.array(X_list), np.array(Y_list)
