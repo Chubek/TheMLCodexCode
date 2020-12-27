@@ -27,7 +27,7 @@ class LeastSquaresRegressor:
 
         return mean_y - (diff * mean_X)
 
-    def train():
+    def fit():
         diff = self.__calculate_diff()
         intercept = self.__calculate_intercept(diff) 
 
