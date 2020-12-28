@@ -151,6 +151,8 @@ def Simplified_smo(C=C, tol=tol, max_passes=max_passes, X=X, y=y):
         else:
             passes = 0
 
+        return alphas, b
+
                 
 
 
